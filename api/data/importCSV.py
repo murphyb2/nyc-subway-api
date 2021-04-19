@@ -68,8 +68,7 @@ def importCSV(DATE):
                 entries,
                 exits,
                 NULL::bigint as net_entries,
-                NULL::bigint as net_exits,
-                '{DATE}.csv' as filename
+                NULL::bigint as net_exits
             FROM csv_{DATE}
             ) a
             ORDER BY unit_id, observed_at

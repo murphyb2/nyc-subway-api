@@ -132,7 +132,6 @@ class DailyCounts2021(models.Model):
 #     exits = models.BigIntegerField()
 #     net_entries = models.BigIntegerField(blank=True, null=True)
 #     net_exits = models.BigIntegerField(blank=True, null=True)
-#     filename = models.CharField(max_length=-1)
 
 #     class Meta:
 #         managed = False
