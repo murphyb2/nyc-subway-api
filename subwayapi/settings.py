@@ -145,8 +145,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # CORS Middleware
-# CORS_ORIGIN_ALLOW_ALL = True if DEBUG else False
-CORS_ORIGIN_ALLOW_ALL = DEBUG
+CORS_ALLOW_ALL_ORIGINS = bool(os.environ["CORS_ALLOW_ALL_ORIGINS"])
 CORS_ORIGIN_WHITELIST = (
     os.environ["CORS_WHITELIST"],
 )
