@@ -12,9 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import environ
-env = environ.Env()
-environ.Env.read_env()
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
+SECRET_KEY = config('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(os.environ['DJANGO_DEBUG'])
+DEBUG = bool(config('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = [
     'localhost',
@@ -84,22 +82,22 @@ WSGI_APPLICATION = 'subwayapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DB_NAME=os.environ['DB_NAME']
-DB_USER=os.environ['DB_USER']
-DB_PASSWORD=os.environ['DB_PASSWORD']
-DB_HOST=os.environ['DB_HOST']
+DB_NAME=config('DB_NAME')
+DB_USER=config('DB_USER')
+DB_PASSWORD=config('DB_PASSWORD')
+DB_HOST=config('DB_HOST')
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': os.environ['DB_NAME'],
+        'NAME': config('DB_NAME'),
 
-        'USER': os.environ['DB_USER'],
+        'USER': config('DB_USER'),
 
-        'PASSWORD': os.environ['DB_PASSWORD'],
+        'PASSWORD': config('DB_PASSWORD'),
 
-        'HOST': os.environ['DB_HOST'],
+        'HOST': config('DB_HOST'),
 
         # 'PORT': '59653',
     }
@@ -145,7 +143,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # CORS Middleware
-CORS_ALLOW_ALL_ORIGINS = bool(os.environ["CORS_ALLOW_ALL_ORIGINS"])
-CORS_ORIGIN_WHITELIST = (
-    os.environ["CORS_WHITELIST"],
-)
+if(bool(config("CORS_ALLOW_ALL_ORIGINS"))):
+  CORS_ALLOW_ALL_ORIGINS = bool(config("CORS_ALLOW_ALL_ORIGINS"))
+else:
+  CORS_ORIGIN_WHITELIST = (
+    config("CORS_WHITELIST"),
+  )

@@ -9,10 +9,9 @@ verify_ssl = true
 djangorestframework = "*"
 pandas = "*"
 django-cors-headers = "*"
-djangorestframework-gis = "*"
-django-environ = "*"
 gunicorn = "*"
 psycopg2 = "*"
+python-decouple = "*"
 
 [requires]
 python_version = "3.7"
