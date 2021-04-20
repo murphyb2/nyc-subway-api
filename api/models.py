@@ -97,14 +97,6 @@ class DailyCounts2021(models.Model):
         managed = False
         db_table = 'daily_counts_2021'
 
-# class YearlyCounts(models.Model):
-#     id = models.IntegerField(primary_key=True)
-#     stop_name = models.CharField(max_length=255, blank=True, null=True)
-#     longitude = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
-#     latitude = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
-#     total_year_entries = models.IntegerField(blank=True, null=True)
-#     total_year_esits = models.IntegerField(blank=True, null=True)
-
 
 # class DailySubunit(models.Model):
 #     unit_id = models.CharField(max_length=-1, blank=True, null=True)
