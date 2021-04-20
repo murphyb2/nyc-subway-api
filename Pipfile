@@ -12,6 +12,7 @@ django-cors-headers = "*"
 djangorestframework-gis = "*"
 django-environ = "*"
 gunicorn = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.7"
