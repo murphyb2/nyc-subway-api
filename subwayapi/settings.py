@@ -24,14 +24,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('DJANGO_SECRET_KEY')
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool(env('DJANGO_DEBUG'))
+DEBUG = bool(os.environ['DJANGO_DEBUG'])
 
 ALLOWED_HOSTS = [
     'localhost',
-    'nyc-subway-turnstile-api.herokuapp.com/'
+    'nyc-subway-turnstile-api.herokuapp.com'
 ]
 
 
@@ -84,22 +84,22 @@ WSGI_APPLICATION = 'subwayapi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DB_NAME=env('DB_NAME')
-DB_USER=env('DB_USER')
-DB_PASSWORD=env('DB_PASSWORD')
-DB_HOST=env('DB_HOST')
+DB_NAME=os.environ['DB_NAME']
+DB_USER=os.environ['DB_USER']
+DB_PASSWORD=os.environ['DB_PASSWORD']
+DB_HOST=os.environ['DB_HOST']
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': env('DB_NAME'),
+        'NAME': os.environ['DB_NAME'],
 
-        'USER': env('DB_USER'),
+        'USER': os.environ['DB_USER'],
 
-        'PASSWORD': env('DB_PASSWORD'),
+        'PASSWORD': os.environ['DB_PASSWORD'],
 
-        'HOST': env('DB_HOST'),
+        'HOST': os.environ['DB_HOST'],
 
         # 'PORT': '59653',
     }
