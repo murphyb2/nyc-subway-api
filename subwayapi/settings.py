@@ -31,6 +31,7 @@ DEBUG = bool(env('DJANGO_DEBUG'))
 
 ALLOWED_HOSTS = [
     'localhost',
+    'nyc-subway-turnstile-api.herokuapp.com/'
 ]
 
 
