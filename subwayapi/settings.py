@@ -148,5 +148,5 @@ STATIC_URL = '/static/'
 # CORS_ORIGIN_ALLOW_ALL = True if DEBUG else False
 CORS_ORIGIN_ALLOW_ALL = DEBUG
 CORS_ORIGIN_WHITELIST = (
-    env("CORS_WHITELIST"),
+    os.environ["CORS_WHITELIST"],
 )
