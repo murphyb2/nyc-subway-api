@@ -16,7 +16,23 @@ from .models import Station, DailyCounts2021, DailyCounts2020, DailyCounts2019
 
 @api_view(['GET'])
 def index(request):
-    return Response('API BASE POINT')
+    content = {
+        "endpoints": {
+            "stations": {
+                "GET": "returns list of all stations with coordinates and other descriptors"
+            },
+            "month/:year": {
+                "GET": "returns list of each station with the total number of entries and exits over the entire month of the requested year"
+            },
+            "year/:year": {
+                "GET": "returns list of each station with the total number of entries and exits over the entire requested year"
+            },
+            "totals": {
+                "GET": "returns aggregate information including single day max entry and exit values for each year"
+            }
+        }
+    }
+    return Response(content)
 
 @api_view(['GET'])
 def stations(request):

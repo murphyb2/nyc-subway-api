@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import stations, AggregateView, WeeklyUpdateView, Monthly2021View, Monthly2020View, Monthly2019View, Yearly2021View, Yearly2020View, Yearly2019View
+from .views import index, stations, AggregateView, WeeklyUpdateView, Monthly2021View, Monthly2020View, Monthly2019View, Yearly2021View, Yearly2020View, Yearly2019View
 from rest_framework.routers import DefaultRouter
 
 app_name = 'api'
 
 router = DefaultRouter(trailing_slash=False)
 urlpatterns = [
+	path('', index, name="base"),
 	path('stations', stations, name="stations"),
     path('year/2021', Yearly2021View.as_view()),
     path('year/2020', Yearly2020View.as_view()),
