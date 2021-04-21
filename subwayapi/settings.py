@@ -48,10 +48,10 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -146,6 +146,4 @@ STATIC_URL = '/static/'
 if(bool(config("CORS_ALLOW_ALL_ORIGINS"))):
   CORS_ALLOW_ALL_ORIGINS = bool(config("CORS_ALLOW_ALL_ORIGINS"))
 else:
-  CORS_ORIGIN_WHITELIST = (
-    config("CORS_WHITELIST"),
-  )
+    CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS").split(",")
