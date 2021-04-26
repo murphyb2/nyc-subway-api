@@ -147,3 +147,5 @@ if(bool(config("CORS_ALLOW_ALL_ORIGINS"))):
   CORS_ALLOW_ALL_ORIGINS = bool(config("CORS_ALLOW_ALL_ORIGINS"))
 else:
     CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS").split(",")
+
+MTA_DEV_KEY=config("MTA_DEV_KEY")
