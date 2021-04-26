@@ -161,7 +161,6 @@ class WeeklyUpdateView(APIView):
     
     def get(self, request, format=None):
         
-        today = '210327'
         upToDate = shouldUpdate()
         if "error" in upToDate:
             return Response({'success': False, 'error': upToDate["error"]})

@@ -21,6 +21,7 @@ def importCSV(DATE):
         # download new data
         url = f"http://web.mta.info/developers/data/nyct/turnstile/turnstile_{DATE}.txt"
         data = pd.read_csv(url)
+        print("mta data downloaded")
 
         # create temp table to import new data
         sql = f"""
