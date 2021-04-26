@@ -19,8 +19,7 @@ def importCSV(DATE):
         cur = conn.cursor()
 
         # download new data
-        url = f"http://web.mta.info/developers/data/nyct/turnstile/turnstile_{DATE}.txt"
-        print(f"url -> {url}")
+        url = f"http://web.mta.info/developers/data/nyct/turnstile/turnstile_{DATE}.txt?key={settings.MTA_DEV_KEY}"
         data = pd.read_csv(url, sep=",")
         print(data.head())
         print("mta data downloaded")
