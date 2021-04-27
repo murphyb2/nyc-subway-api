@@ -10,6 +10,7 @@ def shouldUpdate():
     DB_HOST = settings.DB_HOST
 
     result = {}
+    print("should update check")
 
     try:
         conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
@@ -30,7 +31,7 @@ def shouldUpdate():
             select max(observed_at) from turnstile_observations
         """
         cur.execute(sql)
-        db_most_recent_saturday_obj = cur.fetchone()[0] + timedelta(days=1)
+        db_most_recent_saturday_obj = cur.fetchone()[0]
         print(f"db most recent saturday = {db_most_recent_saturday_obj}")
 
         # if the max date in the db is earlier than the most recent sunday
