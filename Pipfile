@@ -16,6 +16,7 @@ celery = "*"
 django-celery-beat = "*"
 django-storages = "*"
 boto3 = "*"
+redis = "*"
 
 [requires]
 python_version = "3.7"

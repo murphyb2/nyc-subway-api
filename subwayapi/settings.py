@@ -171,10 +171,4 @@ CLOUDAMQP_URL=config("CLOUDAMQP_URL")
 CLOUDAMQP_APIKEY=config("CLOUDAMQP_APIKEY")
 # Celery
 CELERY_BROKER_URL=CLOUDAMQP_URL
-# CELERY_BEAT_SCHEDULE = {
-#     "scheduled_task": {
-#         "task": "update.tasks.add",
-#         "schedule": 5.0,
-#         "args": (10,10)
-#     }
-# }
+CELERY_RESULT_BACKEND=config("REDIS_URL")
