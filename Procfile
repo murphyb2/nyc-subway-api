@@ -1,2 +1,2 @@
 web: gunicorn subwayapi.wsgi
-worker: celery -A core worker -B -l INFO
+worker: celery -A subwayapi worker -B -l INFO
