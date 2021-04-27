@@ -1,2 +1,2 @@
 web: gunicorn subwayapi.wsgi
-worker: celery worker --app=tasks.app
+worker: celery worker --app=update.app
