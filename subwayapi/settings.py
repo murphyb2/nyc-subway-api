@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'api',
     'corsheaders',
     'update',
-    'django_celery_beat'
+    'django_celery_beat',
+    'django_celery_results'
 ]
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
@@ -171,4 +172,4 @@ CLOUDAMQP_URL=config("CLOUDAMQP_URL")
 CLOUDAMQP_APIKEY=config("CLOUDAMQP_APIKEY")
 # Celery
 CELERY_BROKER_URL=CLOUDAMQP_URL
-CELERY_RESULT_BACKEND=config("REDIS_TLS_URL")
+CELERY_RESULT_BACKEND="django_db"
