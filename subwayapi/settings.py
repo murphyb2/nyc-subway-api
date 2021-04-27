@@ -45,7 +45,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'api',
     'corsheaders',
+    'update',
+    'django_celery_beat'
 ]
+DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
@@ -128,7 +131,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 
@@ -149,3 +152,16 @@ else:
     CORS_ALLOWED_ORIGINS = config("CORS_ALLOWED_ORIGINS").split(",")
 
 MTA_DEV_KEY=config("MTA_DEV_KEY")
+
+# RabbitMQ 
+CLOUDAMQP_URL=config("CLOUDAMQP_URL")
+CLOUDAMQP_APIKEY=config("CLOUDAMQP_APIKEY")
+# Celery
+CELERY_BROKER_URL=CLOUDAMQP_URL
+# CELERY_BEAT_SCHEDULE = {
+#     "scheduled_task": {
+#         "task": "update.tasks.add",
+#         "schedule": 5.0,
+#         "args": (10,10)
+#     }
+# }
