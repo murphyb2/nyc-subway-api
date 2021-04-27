@@ -12,10 +12,11 @@ django-cors-headers = "*"
 gunicorn = "*"
 psycopg2 = "*"
 python-decouple = "*"
-celery = {extras = ["redis"],version = "*"}
 django-celery-beat = "*"
 django-storages = "*"
 boto3 = "*"
+django-celery-results = "*"
+celery = "*"
 
 [requires]
 python_version = "3.7"
