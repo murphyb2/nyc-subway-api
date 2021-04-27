@@ -146,14 +146,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_URL = '/images/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
-
 # S3 Config
 if DEBUG is False:
     AWS_ACCESS_KEY_ID=config("AWS_ACCESS_KEY_ID")
