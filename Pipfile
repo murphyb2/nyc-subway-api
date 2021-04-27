@@ -14,6 +14,8 @@ psycopg2 = "*"
 python-decouple = "*"
 celery = "*"
 django-celery-beat = "*"
+django-storages = "*"
+boto3 = "*"
 
 [requires]
 python_version = "3.7"

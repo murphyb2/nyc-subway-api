@@ -143,7 +143,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/static/subway/'
+
+# S3 Config
+if DEBUG is False:
+    AWS_ACCESS_KEY_ID=config("AWS_ACCESS_KEY_ID")
+    AWS_SECRET_ACCESS_KEY=config("AWS_SECRET_ACCESS_KEY")
+    AWS_STORAGE_BUCKET_NAME=config("AWS_STORAGE_BUCKET_NAME")
+    AWS_REGION=config("AWS_REGION")
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3StaticStorage'
 
 # CORS Middleware
 if(bool(config("CORS_ALLOW_ALL_ORIGINS"))):
