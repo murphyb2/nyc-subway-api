@@ -12,6 +12,8 @@ django-cors-headers = "*"
 gunicorn = "*"
 psycopg2 = "*"
 python-decouple = "*"
+celery = "*"
+django-celery-beat = "*"
 
 [requires]
 python_version = "3.7"

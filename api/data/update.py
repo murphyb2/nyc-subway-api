@@ -10,6 +10,8 @@ def updateValues(year):
     start_time = time.time()
     result = {}
 
+    print("updating values")
+
     try:
         conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASSWORD, host=DB_HOST)
         print("connected")
