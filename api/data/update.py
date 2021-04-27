@@ -134,7 +134,7 @@ def updateValues(year):
             select max(observed_at) from turnstile_observations
         """
         cur.execute(sql)
-        new_most_recent_saturday_obj = cur.fetchone()[0] + timedelta(days=1)
+        new_most_recent_saturday_obj = cur.fetchone()[0]
 
         result['newMostRecentSaturday'] = new_most_recent_saturday_obj.strftime("%Y-%m-%d")
         result["success"] = True
