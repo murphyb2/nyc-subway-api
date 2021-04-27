@@ -24,7 +24,7 @@ def WeeklyUpdate():
     print("current saturday: " + upToDate["currentSaturday"].strftime("%Y-%m-%d"))
 
     saturdayToImport = upToDate["dbMostRecentSaturday"] + timedelta(days=7) 
-    currentSaturday = upToDate["currentSaturday"]
+    currentSaturday = upToDate["currentSaturday"] + timedelta(days=1) 
 
     # download and import new weekly data
     while(saturdayToImport <= currentSaturday):
@@ -41,6 +41,7 @@ def WeeklyUpdate():
     result = updateValues(year = upToDate["dbMostRecentSaturday"].year)
     content = {
         'success': result['success'],
+        'msg': result['newMostRecentSaturday'],
         'error': result['error']
     }
 
