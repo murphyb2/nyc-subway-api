@@ -80,7 +80,7 @@ def importCSV(DATE):
         """
         cur.execute(sql)
         
-        print("turnsilte observations written")
+        print("turnstile observations written")
 
         conn.commit()
         result["success"] = True

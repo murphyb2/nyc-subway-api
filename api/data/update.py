@@ -1,6 +1,7 @@
 from django.conf import settings
 import psycopg2
 import time
+from datetime import timedelta
 
 def updateValues(year):
     DB_USER = settings.DB_USER
@@ -127,6 +128,15 @@ def updateValues(year):
         print(f"updated {year} table")
 
         conn.commit()
+
+        # find the most recent record in the db
+        sql = f"""
+            select max(observed_at) from turnstile_observations
+        """
+        cur.execute(sql)
+        new_most_recent_saturday_obj = cur.fetchone()[0]
+
+        result['newMostRecentSaturday'] = new_most_recent_saturday_obj.strftime("%Y-%m-%d")
         result["success"] = True
         result["error"] = ""
         result["status"] = 200
