@@ -1,7 +1,3 @@
-from datetime import timedelta
-from api.data.importCSV import importCSV
-from api.data.update import updateValues
-from api.data.shouldUpdate import shouldUpdate
 from django.db.models.aggregates import Sum, Max
 from django.db.models.functions.datetime import ExtractYear, ExtractMonth
 from django.db.models import Max
