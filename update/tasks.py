@@ -38,7 +38,7 @@ def WeeklyUpdate():
         saturdayToImport = saturdayToImport + timedelta(days=7)  
 
     # update net values
-    result = updateValues(year = upToDate["dbMostRecentSaturday"].year)
+    result = updateValues(beginDate = upToDate["dbMostRecentSaturday"])
     content = {
         'success': result['success'],
         'msg': result['newMostRecentSaturday'],
@@ -46,4 +46,3 @@ def WeeklyUpdate():
     }
 
     return content
-

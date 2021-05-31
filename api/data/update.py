@@ -3,7 +3,7 @@ import psycopg2
 import time
 from datetime import timedelta
 
-def updateValues(year):
+def updateValues(beginDate):
     DB_USER = settings.DB_USER
     DB_PASSWORD = settings.DB_PASSWORD
     DB_NAME = settings.DB_NAME
@@ -27,6 +27,7 @@ def updateValues(year):
                 exits - lag(exits, 1) OVER w AS calculated_net_exits,
                 DATE_PART('day', observed_at - lag(observed_at, 1) OVER w) * 24 + DATE_PART('hour', observed_at - lag(observed_at, 1) OVER w) as hours_difference
                 FROM turnstile_observations
+                WHERE observed_at >= '{beginDate.strftime("%Y-%m-%d")}'
                 WINDOW w AS (PARTITION BY unit_id ORDER BY observed_at)
             )
             UPDATE turnstile_observations
@@ -92,8 +93,8 @@ def updateValues(year):
         #  update year table
         
         sql = f"""
-            DROP TABLE IF EXISTS daily_counts_{year};
-            CREATE TABLE daily_counts_{year} AS (
+            DROP TABLE IF EXISTS daily_counts_{beginDate.year};
+            CREATE TABLE daily_counts_{beginDate.year} AS (
             SELECT
                 b.stop_name,
                 b.daytime_routes,
@@ -120,12 +121,12 @@ def updateValues(year):
             FROM stations
             ) b
             ON a.complex_id = b.complex_id
-            WHERE date >= '{year}-01-01'::date
-            AND date < '{year + 1}-01-01'
+            WHERE date >= '{beginDate.year}-01-01'::date
+            AND date < '{beginDate.year + 1}-01-01'
             )
         """
         cur.execute(sql)
-        print(f"updated {year} table")
+        print(f"updated {beginDate.year} table")
 
         conn.commit()
 
