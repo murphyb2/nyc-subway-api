@@ -10,6 +10,8 @@ from rest_framework.response import Response
 from .serializers import StationSerializer
 from .models import Station, DailyCounts2021, DailyCounts2020, DailyCounts2019
 
+from update.tasks import WeeklyUpdate
+
 @api_view(['GET'])
 def index(request):
     content = {
@@ -32,6 +34,9 @@ def index(request):
 
 @api_view(['GET'])
 def stations(request):
+    # Trigger the update task
+    WeeklyUpdate.apply_async()
+    
     stations = Station.objects.all().order_by('stop_name')
     serializer = StationSerializer(stations, many=True)
 
