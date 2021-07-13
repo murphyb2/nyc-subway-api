@@ -37,10 +37,16 @@ def shouldUpdate():
         
         # find the most recent record in the db
         sql = f"""
-            select max(observed_at) from turnstile_observations
+            select (CASE 
+                WHEN max(observed_at) IS NULL 
+                THEN date('2019-1-04') 
+                ELSE max(observed_at)
+                END) from turnstile_observations;
         """
         cur.execute(sql)
-        db_most_recent_saturday_obj = cur.fetchone()[0] + timedelta(days=1)
+        res = cur.fetchone()[0]
+        
+        db_most_recent_saturday_obj = res + timedelta(days=1)
         print(f"db most recent saturday = {db_most_recent_saturday_obj}")
 
         # if the max date in the db is earlier than the most recent sunday
