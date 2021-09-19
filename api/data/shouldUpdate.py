@@ -3,7 +3,7 @@ from django.conf import settings
 import psycopg2
 
 def shouldUpdate():
-    # get today's date and find the previous Sunday
+    # get today's date and find the previous Saturday
     DB_USER = settings.DB_USER
     DB_PASSWORD = settings.DB_PASSWORD
     DB_NAME = settings.DB_NAME
@@ -40,7 +40,7 @@ def shouldUpdate():
         cur.execute(sql)
         res = cur.fetchone()[0]
         
-        db_most_recent_saturday_obj = res + timedelta(days=1)
+        db_most_recent_saturday_obj = res
         print(f"db most recent saturday = {db_most_recent_saturday_obj}")
 
         # if the max date in the db is earlier than the most recent sunday
