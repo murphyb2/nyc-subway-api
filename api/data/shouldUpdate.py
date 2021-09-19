@@ -19,19 +19,13 @@ def shouldUpdate():
 
         today = datetime.today()
         day_of_week = today.isoweekday()
-        # Only try updating on Sunday. 
-        # There is some bug in the below logic that
-        # shifts things off by one but it definitely 
-        # works on Sundays. So for now I'm just 
-        # forcing updates to only happen on Sunday
-        if day_of_week != 7:
-            print("today isn't sunday. only update on sundays")
-            result["shouldUpdate"] = False
-            return result
-        # monday -> 1
-        # sunday -> 7
-        days_past_saturday = day_of_week % 7 + 1
-        saturday_obj = today - timedelta(days=days_past_saturday)
+        
+        if day_of_week == 6: # saturday
+            day_of_week = -1
+        if day_of_week == 7: # sunday
+            day_of_week = 0
+
+        saturday_obj = today - timedelta(days=(day_of_week + 1))
         saturday = saturday_obj.strftime("%Y-%m-%d")
         print(saturday)
         
