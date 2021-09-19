@@ -44,7 +44,7 @@ def shouldUpdate():
         print(f"db most recent saturday = {db_most_recent_saturday_obj}")
 
         # if the max date in the db is earlier than the most recent sunday
-        if(db_most_recent_saturday_obj < saturday_obj):
+        if(db_most_recent_saturday_obj.date < saturday_obj.date):
             print('we need to update')
             result["shouldUpdate"] = True
             result["currentSaturday"] = saturday_obj
