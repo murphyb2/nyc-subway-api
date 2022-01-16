@@ -35,7 +35,7 @@ def index(request):
 @api_view(['GET'])
 def stations(request):
     # Trigger the update task
-    WeeklyUpdate.apply_async()
+    # WeeklyUpdate.apply_async()
     
     stations = Station.objects.all().order_by('stop_name')
     serializer = StationSerializer(stations, many=True)
